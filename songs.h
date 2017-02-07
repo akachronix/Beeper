@@ -5,7 +5,6 @@
 #include "notes.h"
 
 void Mary() {
-
     Beep(B4, 300);
     Beep(A4, 300);
     Beep(G4, 300);
@@ -86,6 +85,15 @@ void Type() {
     Beep(D4, 250);
     Beep(C4, 250);
     Sleep(250);
+}
+
+void Harry() {
+    Beep(B4, 400);
+    Beep(E5, 400);
+    Sleep(400);
+    Beep(G5, 400);
+    Beep(Gb5, 400);
+    Beep(E5, 400);
 }
 
 #endif // SONGS_H
