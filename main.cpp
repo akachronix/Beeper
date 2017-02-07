@@ -21,51 +21,49 @@ using std::ifstream;
 
 int main(int argc, char* argv[]) {
     try {
-        ifstream in("usersong.txt");
-        cout << "\nBeeper v0.02\nby Chronix\n";
-        string mode = argv[1];
-        if(mode == "play" | mode == "Play"){
-            cout << "\n1) Mary Had a Little Lamb\n2) Type Your Text Here\n\n";
-            char songsel = _getch();
-            if(songsel == '1') {
-                cout << "Playing Mary Had a Little Lamb...\n";
+        if(argc == 1) {
+            cout << "\nError 22: User did not enter any arguments.\n";
+            cout << "\nProper Usage:\n1) beeper play    - lets you select a song\n";
+            cout << "2) beeper playall - plays all songs\n";
+        } else {
+            cout << "\nBeeper v0.02\nby Chronix\n";
+            string mode = argv[1];
+            if(mode == "play" | mode == "Play"){
+                cout << "\n1) Mary Had a Little Lamb\n2) Type Your Text Here\n3) Harry Potter Theme\n\n";
+                char songsel = _getch();
+                if(songsel == '1') {
+                    cout << "Playing Mary Had a Little Lamb...\n";
+                    Mary();
+                    cout << "\nFinished!\n";
+                } else if(songsel == '2'){
+                    cout << "Playing Type Your Text Here...\n";
+                    Type();
+                    cout << "\nFinished!\n";
+                } else if(songsel == '3') {
+                    cout < "Playing Harry Potter Theme...\n";
+                    Harry();
+                    cout << "Finished!\n";
+                } else {
+                    cout << "\nError 1: invalid syntax\n";
+                    cout << songsel << "\n";
+                }
+            } else if(mode == "playall" | mode == "PlayAll" | mode == "Playall" | mode == "playAll") {
+                cout << "\nPlaying Mary Had a Little Lamb...\n";
                 Mary();
                 cout << "\nFinished!\n";
-            } else if(songsel == '2'){
-                cout << "Playing Type Your Text Here...\n";
+                Sleep(2000);
+                cout << "\nPlaying Type Your Text Here...\n";
                 Type();
                 cout << "\nFinished!\n";
-            } else if(songsel == '3') {
-                cout << "Playing User Made Song...\n";
-                int txtLines = io::intinput("\nHow many lines is your file? ");
-                string line[txtLines];
-                if(in.is_open()) {
-                    int j = 0;
-                    for(int i = 0; i < txtLines; i++) {
-                        getline(in, line[i]);
-                    } for(int i = 0; i < txtLines; i++) {
-                        if(i == 1) {
-                            Beep(atoi(line[i].c_str()), atoi())
-                        }
-                        if(j % 2 == 0) {
-                            j++;
-                            Beep(atoi(line[j]))
-                        }
-                        j = i;
-                    }
-                } else {
-                    cout << "\nError 2: File could not be opened.\n";
-                    return -1;
-                } cout << "\nFinished!\n";
+                Sleep(2000);
+                cout << "\nPlaying Harry Potter Theme...\n";
+                Harry();
+                cout << "\nFinished!\n";
             } else {
                 cout << "\nError 1: invalid syntax\n";
-                cout << songsel << "\n";
+                cout << argv[1] << "\n";
             }
-        } else {
-            cout << "\nError 1: invalid syntax\n";
-            cout << argv[1] << "\n";
         }
-        in.close();
     } catch(...) {
         cout << "\nError 0: Unexpected error occurred...\n";
         return -1;
